@@ -1,20 +1,36 @@
-## 📝 Descrição do Projeto
-Este projeto consiste em um sistema de auditoria financeira desenvolvido para identificar anomalias, fraudes ou erros em lançamentos de vendas. O objetivo principal é garantir a integridade dos dados financeiros, utilizando uma margem de tolerância e limites de segurança para sinalizar transações que fogem do padrão esperado.  
-## 🚀 Tecnologias Utilizadas
-Linguagem: Python 
-Tipagem de Dados: Tratamento rigoroso de float para precisão financeira e conversão de strings (substituição de vírgulas por pontos). 
-Lógica de Auditoria:
-•	Média Aritmética: Utilizada para estabelecer a base de comparação das vendas. 
-•	Limites de Segurança: Definição de variáveis globais para controle de teto transacional. 
-•	Detecção de Anomalias: Gatilhos automáticos para vendas que superam em 5x a média calculada. 
- 
-## 📊 Resultados e Aprendizados
-O projeto demonstrou a importância da normalização de dados para obter resultados realistas. 
-•	Sensibilidade do Sistema: Identificou-se que um multiplicador de 5x pode ser muito alto para certas brechas de negócio, sugerindo-se o ajuste para 2.5x para capturar anomalias mais sutis. 
-•	Segurança de Software: O uso de global LIMITE_SEGURANCA foi identificado como uma vulnerabilidade em sistemas bancários reais, reforçando a necessidade de encapsulamento em classes privadas para evitar scripts maliciosos. 
-•	Tratamento de Erros: Aprendizado prático sobre exceções comuns, como ValueError na entrada de dados e UnboundLocalError ao tentar manipular variáveis globais sem a declaração correta. 
- 
-## 🔧 Como Executar
- Entrada: O usuário digita os valores das vendas do dia. 
- Processamento: A função analisar_vendas calcula a média e compara com o LIMITE_SEGURANCA. 
- Saída: O sistema exibe o status (Quarentena ou Normal) e detalha os tipos de dados das variáveis processadas.
+# Váriavel global
+limite_segurança = 10000
+
+def analisar_vendas(v1, v2, v3):
+  global limite_segurança # Alteração do limite
+  # Média
+  media = (v1 + v2 + v3) / 3
+  print(f"Média das vndas: R$ {media:.2f}")
+  # Limite
+  if media > limite_segurança:
+   print("Sistema em quarentena!")
+  # Verificação de discrepancia
+  vendas = [v1, v2, v3]
+  for venda in vendas:
+   if venda > 5 * media:
+    print("Revisão manual")
+    break
+  # Ajuste no limite
+  resposta = input ("Alguma venda alta é legitima? (s/n):").lower
+  if resposta == "s":
+   limite_segurança = novo_limite
+   print(f"Novo limite de segurança: R$ {limite_segurança:.2f}")
+   # Exibição dos tipos
+  print("tipos de dados")
+  print(f"v1: {type(v1)}")
+  print(f"v2: {type(v2)}")
+  print(f"v3: {type(v3)}")
+  print(f"media: {type(media)}")
+  print(f"limite_segurança: {type(limite_segurança)}")
+#entrada de dados
+print("Sistema de Auditoria de Vendas")
+venda1 = float(input("Digite o valor da primeira venda: R$"))
+venda2 = float(input("Digite o valor da segunda venda: R$"))
+venda3 = float(input("Digite o valor da terceira venda: R$"))
+# Função
+analisar_vendas(venda1, venda2, venda3)
