@@ -1,0 +1,141 @@
+1:
+
+emoji_data = {
+
+  "nome": "Smile",
+
+  "grade": [
+
+    [(255,255,0), (255,255,0), (255,255,0), (255,255,0), (255,255,0)], # Linha 0
+
+    [(255,255,0), (0,0,0),  (255,255,0), (0,0,0),  (255,255,0)], # Linha 1 (Olhos)
+
+    [(255,255,0), (255,255,0), (255,255,0), (255,255,0), (255,255,0)], # Linha 2
+
+    [(255,255,0), (0,0,0),  (0,0,0),  (0,0,0),  (255,255,0)], # Linha 3 (Boca)
+
+    [(255,255,0), (255,255,0), (255,255,0), (255,255,0), (255,255,0)] # Linha 4
+
+  ]
+
+}
+
+for chave in emoji_data:
+
+ if chave =="grade":
+
+  for linha in emoji_data[chave]:
+
+   for i, pixel in enumerate(linha):
+
+    if pixel == (255,255,0):
+
+     linha[i] = (pixel[0]//2, pixel[1]//2, pixel[2]//2)
+
+
+
+plt.figure(figsize=(4,4))
+
+plt.imshow(emoji_data["grade"])
+
+plt.title(f"{emoji_data['nome']} com Sombra")
+
+plt.axis('off')
+
+plt.show()
+
+
+
+2:
+
+biblioteca_musical = {
+
+  "Toques": [
+
+    {"Alegre": ([440, 480], [520, 560])},
+
+    {"Triste": ([200, 150], [100, 50])}
+
+  ]
+
+}
+
+
+
+for lista_toques in biblioteca_musical.values():
+
+  for dicionario_musica in lista_toques:
+
+    for nome_musica, matriz in dicionario_musica.items():     
+
+      nova_linha0 = [matriz[0][0], matriz[1][0]]
+
+      nova_linha1 = [matriz[0][1], matriz[1][1]]    
+
+      nova_matriz = (nova_linha0, nova_linha1)     
+
+      dicionario_musica.update({nome_musica: nova_matriz})
+
+print("Biblioteca Musical Transposta:")
+
+for toque in biblioteca_musical["Toques"]:
+
+  print(toque)
+
+
+
+3:
+
+playlist_imagens = {
+
+  "Cyber_Art": [
+
+    {"frame": (255, 100, 50), "nome": "Neon_Sun"},
+
+    {"frame": (0, 255, 150), "nome": "Matrix_Rain"}
+
+  ],
+
+  "Classic_Art": [
+
+    {"frame": (139, 69, 19), "nome": "Vintage_Paper"}
+
+  ]
+
+}
+
+
+
+playlist_imagens["Cyber_Art"].insert(0, {"frame": (255, 255, 255), "nome": "White_Start"})
+
+
+
+for categoria in playlist_imagens.keys():
+
+  print(f"\n--- Categoria: {categoria} ---")
+
+  
+
+  for i in range(len(playlist_imagens[categoria])):
+
+    item_atual = playlist_imagens[categoria][i]
+
+    nome_arte = item_atual.pop("nome")
+
+    cor_pixel = item_atual["frame"]
+
+    
+
+    print(f"Arte: {nome_arte}")
+
+    
+
+    for canal in cor_pixel:
+
+      brilho_ajustado = canal + 10 if canal < 245 else 255
+
+      print(f" > Canal Original: {canal} | Ajustado: {brilho_ajustado}")
+
+
+
+print("\nProcessamento da Playlist Concluído")
