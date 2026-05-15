@@ -4,7 +4,7 @@
 Este projeto consiste em um sistema de auditoria financeira desenvolvido para identificar anomalias, fraudes ou erros em lançamentos de vendas. O objetivo principal é garantir a integridade dos dados financeiros, utilizando uma margem de tolerância e limites de segurança para sinalizar transações que fogem do padrão esperado.
 Desenvolvido para a disciplina de Programação de Computadores (2026), o sistema processa entradas de vendas diárias, calcula médias e aplica gatilhos lógicos de investigação para colocar o sistema em "quarentena" ou sugerir revisões manuais quando valores discrepantes são detectados.
 
-#🚀 Tecnologias e Conceitos Utilizados
+# 🚀 Tecnologias e Conceitos Utilizados
 Linguagem: Python   
 Tipagem de Dados: Tratamento rigoroso de float para precisão financeira e conversão de strings (substituição de vírgulas por pontos).  
 Lógica de Auditoria:Média Aritmética: Utilizada para estabelecer a base de comparação das vendas.  
